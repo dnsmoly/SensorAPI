@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/measurements")
@@ -63,9 +64,8 @@ public class MeasurementsController {
     }
 
     @GetMapping("/rainyDaysCount")
-    public Long countRainyDays() {
-
-        return measurementsService.countRainyDays();
+    public Map<String, Long> countRainyDays() {
+        return Map.of("days", measurementsService.countRainyDays());
     }
 
     @ExceptionHandler
